@@ -1,20 +1,18 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-const testSclice = createSlice({
-  name: "test",
-  initialState: "",
-  reducers: {
-    addTest(state, action) {
-      return action.payload;
-    },
-  },
-});
+import { configureStore } from "@reduxjs/toolkit";
+import {
+  CarsReducer,
+  addCar,
+  removeCar,
+  changeSerachTerm,
+} from "./Slice/CarsSlice";
+import { FormReducer, changeCost, changeName } from "./Slice/FormSlice";
 
 const store = configureStore({
   reducer: {
-    test: testSclice.reducer,
+    cars: CarsReducer,
+    form: FormReducer,
   },
 });
 
 export { store };
-export const { addTest } = testSclice.actions;
+export { addCar, removeCar, changeCost, changeName, changeSerachTerm };
